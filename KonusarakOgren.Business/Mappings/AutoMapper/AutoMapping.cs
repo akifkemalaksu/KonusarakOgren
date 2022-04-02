@@ -12,6 +12,13 @@ namespace KonusarakOgren.Business.Mappings.AutoMapper
         {
             CreateMap<AddUserRequestModel, User>();
             CreateMap<User, UserResponseModel>();
+
+            CreateMap<TopicFromWebResponseModel, Topic>();
+            CreateMap<Topic, TopicFromWebResponseModel>();
+
+            CreateMap<AddQuestionRequestModel, Question>();
+
+            CreateMap<AddAnswerRequestModel, Answer>();
         }
     }
 }

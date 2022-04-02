@@ -19,15 +19,20 @@ namespace KonusarakOgren.DataAccess.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=MyDatabase.db");
+            optionsBuilder.UseSqlite(@"Data Source=C:\Projects\KonusarakOgren\KonusarakOgren.DataAccess\MyDatabase.db;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Question>()
+            modelBuilder.Entity<Exam>()
                 .HasOne<Topic>()
                 .WithMany()
-                .HasForeignKey(q => q.TopicId);
+                .HasForeignKey(e => e.TopicId);
+
+            modelBuilder.Entity<Question>()
+                .HasOne<Exam>()
+                .WithMany()
+                .HasForeignKey(q => q.ExamId);
 
             modelBuilder.Entity<Answer>()
                 .HasOne<Question>()

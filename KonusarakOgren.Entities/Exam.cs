@@ -3,12 +3,10 @@ using System;
 
 namespace KonusarakOgren.Entities
 {
-    public class Topic : IEntity<int>
+    public class Exam : IEntity<int>
     {
         public int Id { get; set; }
-        public string UrlPath { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public int TopicId { get; set; }
         public DateTime CreateDate { get; set; }
     }
 }

@@ -17,6 +17,11 @@ namespace KonusarakOgren.Business.Implementations
             _answerEngine = answerEngine;
         }
 
+        public IDataResult<Answer> AddAnswer(Answer answer)
+        {
+            return _answerEngine.AddAnswer(answer);
+        }
+
         public IDataResult<Question> AddQuestion(Question question)
         {
             _questionRepository.Insert(question);
