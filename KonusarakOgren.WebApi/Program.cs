@@ -20,10 +20,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IUserEngine, UserEngine>();
 builder.Services.AddScoped<ITopicEngine, TopicEngine>();
-builder.Services.AddScoped<IExamEngine, ExamEngine>();
 builder.Services.AddScoped<IQuestionEngine, QuestionEngine>();
 builder.Services.AddScoped<IAnswerEngine, AnswerEngine>();
 builder.Services.AddScoped<IUserQuestionAnswerEngine, UserQuestionAnswerEngine>();
+builder.Services.AddScoped<IExamEngine, ExamEngine>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

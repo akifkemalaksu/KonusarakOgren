@@ -17,11 +17,6 @@ namespace KonusarakOgren.Business.Implementations
             _answerEngine = answerEngine;
         }
 
-        public IDataResult<Answer> AddAnswer(Answer answer)
-        {
-            return _answerEngine.AddAnswer(answer);
-        }
-
         public IDataResult<Question> AddQuestion(Question question)
         {
             _questionRepository.Insert(question);
@@ -31,7 +26,12 @@ namespace KonusarakOgren.Business.Implementations
 
         public IResult DeleteQuestion(Question question)
         {
-            _questionRepository.Delete(question);
+            var questionAnswersResult = _answerEngine.GetAnswers(a => a.QuestionId == question.Id);
+            if (questionAnswersResult.Data != null)
+            {
+                (questionAnswersResult.Data as List<Answer>).ForEach(answer => _answerEngine.DeleteAnswer(answer));
+            }
+            _questionRepository.Delete(question.Id);
             _questionRepository.SaveChanges();
             return new SuccessResult();
         }

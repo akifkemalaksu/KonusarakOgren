@@ -27,5 +27,17 @@ namespace KonusarakOgren.Business.Implementations
             _userQuestionAnswerRepository.SaveChanges();
             return new SuccessDataResult<UserQuestionAnswer>(userQuestionAnswer);
         }
+
+        public IResult DeleteUserAnswer(UserQuestionAnswer userQuestionAnswer)
+        {
+            _userQuestionAnswerRepository.Delete(userQuestionAnswer.Id);
+            _userQuestionAnswerRepository.SaveChanges();
+            return new SuccessResult();
+        }
+
+        public IDataResult<ICollection<UserQuestionAnswer>> GetUserAnswers(Expression<Func<UserQuestionAnswer, bool>> expression)
+        {
+            return new SuccessDataResult<ICollection<UserQuestionAnswer>>(_userQuestionAnswerRepository.GetMany(expression));
+        }
     }
 }

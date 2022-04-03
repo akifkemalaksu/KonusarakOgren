@@ -22,7 +22,7 @@ namespace KonusarakOgren.Core.DataAccess.EntityFramework
             _dbSet = _context.Set<T>();
         }
 
-        public void Delete(T entity)
+        private void Delete(T entity)
         {
             _dbSet.Remove(entity);
         }

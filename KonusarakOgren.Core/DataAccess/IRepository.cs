@@ -12,8 +12,6 @@ namespace KonusarakOgren.Core.DataAccess
 
         public T Update(T entity);
 
-        public void Delete(T entity);
-
         public void Delete(TKey key);
 
         public T Get(Expression<Func<T, bool>> expression);

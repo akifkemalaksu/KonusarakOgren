@@ -11,5 +11,9 @@ namespace KonusarakOgren.Business.Interfaces
         public IDataResult<UserQuestionAnswer> AddUserAnswer(UserQuestionAnswer userQuestionAnswer);
 
         public IDataResult<UserQuestionAnswer> GetUserAnswer(Expression<Func<UserQuestionAnswer, bool>> expression);
+
+        public IDataResult<ICollection<UserQuestionAnswer>> GetUserAnswers(Expression<Func<UserQuestionAnswer, bool>> expression);
+
+        public IResult DeleteUserAnswer(UserQuestionAnswer userQuestionAnswer);
     }
 }

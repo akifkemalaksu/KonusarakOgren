@@ -10,8 +10,4 @@
     <ProjectReference Include="..\KonusarakOgren.Core\KonusarakOgren.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
 </Project>

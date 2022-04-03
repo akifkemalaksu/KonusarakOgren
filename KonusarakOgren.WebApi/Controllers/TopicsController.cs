@@ -1,5 +1,4 @@
 ﻿using KonusarakOgren.Business.Interfaces;
-using KonusarakOgren.Entities.RequestModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonusarakOgren.WebApi.Controllers
@@ -30,17 +29,6 @@ namespace KonusarakOgren.WebApi.Controllers
         public IActionResult GetTopicWithPath(string path)
         {
             var result = _topicEngine.GetTopicFromPath(path);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpPost("CreateExam")]
-        public IActionResult CreateExam(AddExamRequestModel addExam)
-        {
-            var result = _topicEngine.CreateTopicAndExam(addExam);
             if (result.Success)
             {
                 return Ok(result);

@@ -16,7 +16,5 @@ namespace KonusarakOgren.Business.Interfaces
         public IDataResult<Question> GetQuestion(Expression<Func<Question, bool>> expression);
 
         public IDataResult<ICollection<Question>> GetQuestions(Expression<Func<Question, bool>> expression);
-
-        public IDataResult<Answer> AddAnswer(Answer answer);
     }
 }

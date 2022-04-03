@@ -35,9 +35,16 @@ namespace KonusarakOgren.Business.Implementations
             return new SuccessDataResult<Answer>(answer);
         }
 
-        public IDataResult<UserQuestionAnswer> AddUserAnswerQuestion(UserQuestionAnswer userQuestionAnswer)
+        public IResult DeleteAnswer(Answer answer)
         {
-            return _userQuestionAnswerEngine.AddUserAnswer(userQuestionAnswer);
+            var userAnswersResult = _userQuestionAnswerEngine.GetUserAnswers(a => a.AnswerId == answer.Id);
+            if (userAnswersResult.Data != null)
+            {
+                (userAnswersResult.Data as List<UserQuestionAnswer>).ForEach(u => _userQuestionAnswerEngine.DeleteUserAnswer(u));
+            }
+            _answerRepository.Delete(answer.Id);
+            _answerRepository.SaveChanges();
+            return new SuccessResult();
         }
     }
 }
