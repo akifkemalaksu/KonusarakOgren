@@ -80,5 +80,16 @@ namespace KonusarakOgren.WebApi.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("ResultExam/{id}")]
+        public IActionResult ResultExam(int id, int userId)
+        {
+            var result = _examEngine.GetResultExam(id, userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

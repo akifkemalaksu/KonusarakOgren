@@ -149,5 +149,28 @@ namespace KonusarakOgren.Business.Implementations
             }
             return new SuccessResult(Messages.ExamIsSolved);
         }
+
+        public IDataResult<ResultExamModel> GetResultExam(int examId, int userId)
+        {
+            var exam = _examRepository.Get(e => e.Id.Equals(examId));
+            if (exam == null)
+                return new ErrorDataResult<ResultExamModel>(Messages.NotFound);
+
+            var topicResult = _topicEngine.GetTopic(t => t.Id.Equals(exam.TopicId));
+
+            ResultExamModel result = _mapper.Map<ResultExamModel>(topicResult.Data);
+
+            var questionsResult = _questionEngine.UserAnsweredQuestions(q => q.ExamId.Equals(exam.Id) && q.UserId.Equals(userId));
+
+            result.Questions = _mapper.Map<ICollection<ResultQuestionModel>>(questionsResult.Data);
+
+            (result.Questions as List<ResultQuestionModel>).ForEach(q =>
+            {
+                var answersResult = _answerEngine.GetAnswers(a => a.QuestionId.Equals(q.Id));
+                q.Answers = _mapper.Map<ICollection<ResultAnswerModel>>(answersResult.Data);
+            });
+
+            return new SuccessDataResult<ResultExamModel>(result);
+        }
     }
 }

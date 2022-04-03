@@ -1,6 +1,7 @@
 ﻿using KonusarakOgren.Core.Business;
 using KonusarakOgren.Core.Utilities.Results;
 using KonusarakOgren.Entities;
+using KonusarakOgren.Entities.Dtos;
 using System.Linq.Expressions;
 
 namespace KonusarakOgren.Business.Interfaces
@@ -16,5 +17,7 @@ namespace KonusarakOgren.Business.Interfaces
         public IDataResult<Question> GetQuestion(Expression<Func<Question, bool>> expression);
 
         public IDataResult<ICollection<Question>> GetQuestions(Expression<Func<Question, bool>> expression);
+
+        public IDataResult<ICollection<UserQuestionDto>> UserAnsweredQuestions(Expression<Func<UserQuestionDto, bool>> expression);
     }
 }

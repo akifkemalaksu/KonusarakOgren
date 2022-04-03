@@ -25,6 +25,8 @@ namespace KonusarakOgren.Business.Interfaces
 
         public IDataResult<TakeExamResponseModel> GetTakeExam(int examId);
 
+        public IDataResult<ResultExamModel> GetResultExam(int examId, int userId);
+
         public IResult CreateExam(AddExamRequestModel addExam);
 
         public IResult SolveExam(ICollection<AnswerQuestionRequestModel> answerQuestions);

@@ -2,6 +2,7 @@
 using KonusarakOgren.Core.Utilities.Results;
 using KonusarakOgren.DataAccess.Interfaces;
 using KonusarakOgren.Entities;
+using KonusarakOgren.Entities.Dtos;
 using System.Linq.Expressions;
 
 namespace KonusarakOgren.Business.Implementations
@@ -51,6 +52,11 @@ namespace KonusarakOgren.Business.Implementations
             _questionRepository.Update(question);
             _questionRepository.SaveChanges();
             return new SuccessDataResult<Question>(question);
+        }
+
+        public IDataResult<ICollection<UserQuestionDto>> UserAnsweredQuestions(Expression<Func<UserQuestionDto, bool>> expression)
+        {
+            return new SuccessDataResult<ICollection<UserQuestionDto>>(_questionRepository.UserAnsweredQuestions(expression));
         }
     }
 }
