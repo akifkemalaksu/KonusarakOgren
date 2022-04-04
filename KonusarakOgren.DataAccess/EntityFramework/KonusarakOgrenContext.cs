@@ -19,7 +19,7 @@ namespace KonusarakOgren.DataAccess.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=C:\Projects\KonusarakOgren\KonusarakOgren.DataAccess\MyDatabase.db;");
+            optionsBuilder.UseSqlite(@"Data Source=MyDatabase.db;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
